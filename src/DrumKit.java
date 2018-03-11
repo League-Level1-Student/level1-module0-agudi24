@@ -28,7 +28,19 @@ public class DrumKit extends MouseAdapter {
 
     private void getGoing() throws MalformedURLException {
    	 // 1. Make a JFrame variable and initialize it using "new JFrame()"
-   	 
+    	JFrame frame = new JFrame();
+    	frame.setVisible(true);
+    frame.setSize(200, 200);
+   	frame.setTitle("Hit the Drum!");
+   	JPanel panel = new JPanel();
+   	frame.add(panel);
+   	
+   	String drum = "drum.jpg";
+   	drumLabelWithImage = createLabelImage(drum);
+   	panel.add(drumLabelWithImage);
+   	panel.setLayout(new GridLayout());
+   	frame.pack();
+   	drumLabelWithImage.addMouseListener(this);
    	 // 2. Make the frame visible
    	 
    	 // 3. Set the size of the frame
@@ -56,11 +68,14 @@ public class DrumKit extends MouseAdapter {
     }
 
     public void mouseClicked(MouseEvent e) {
-   	 // 14. When the mouse is clicked, print "mouse clicked"
+   	 // 14. When the mouse is clicked, print "mouse clicke
 
    	 JLabel drumClicked = (JLabel) e.getSource();
    	 // 15. Download a drum sound and drop it into your "default package". You can find it on freesound.org. To download it, log in as leagueofamazing/code4life.
    	 // 16. If they clicked on the drumImage...
+   	 if(drumClicked.equals(drumLabelWithImage)) {
+   		 playSound("drum.wav");
+   	 }
 
    		 // 17. ...use the playSound method to play a drum sound.
 
